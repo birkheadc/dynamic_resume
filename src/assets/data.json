@@ -1,0 +1,43 @@
+{
+  "name": "Colby Birkhead",
+  "contact": {
+    "phone": "+82-10-6501-5021",
+    "email": "birkheadc@gmail.com",
+    "websites": [
+      {
+        "name": "birkheadc.me",
+        "url": "https://www.birkheadc.me"
+      },
+      {
+        "name": "linkedin.com/in/colby-birkhead",
+        "url": "https://www.linkedin.com/in/colby-birkhead"
+      },
+      {
+        "name": "github.com/birkheadc",
+        "url": "https://github.com/birkheadc"
+      },
+      {
+        "name": "facebook.com/colby.birkhead",
+        "url": "https://facebook.com/colby.birkhead"
+      }
+    ]
+  },
+  "introduction": {
+    "en": "American expat and small business manager looking to change gears. Developed software for use in production and advertising. Quick and eager to learn new languages and frameworks, driven to apply best practices and write clean code. Skilled at adapting to new and changing environments. Comfortable in many programming languages, as well as natural ones. Fully fluent in Japanese, conversationally fluent in Korean.",
+    "jp": "ここに日本語でなにか書きましょう"
+  },
+  "sections": {
+    "education": [
+      
+    ],
+    "career": [
+
+    ],
+    "projects": [
+
+    ],
+    "skills": [
+
+    ]
+  }
+}
