@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import TestPage from '../../components/pages/test/TestPage';
 import HomePage from '../../components/pages/home/HomePage';
+import PdfPage from '../../components/pages/pdf/PdfPage';
 
 interface IAppRoutesProps {
 
@@ -14,7 +14,7 @@ interface IAppRoutesProps {
 export default function AppRoutes(props: IAppRoutesProps): JSX.Element | null {
   return (
     <Routes>
-      <Route path='/test' element={<TestPage />} />
+      <Route path='/pdf' element={<PdfPage />} />
       <Route path='/' element={<HomePage />} />
       <Route path='*' element={<Navigate replace={true} to='/' />} />
     </Routes>

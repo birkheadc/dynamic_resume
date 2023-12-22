@@ -15,7 +15,6 @@ export default function PrimaryNav(props: IPrimaryNavProps): JSX.Element | null 
     <nav className='primary-nav-wrapper'>
       <ul>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/test'>Test</NavLink></li>
       </ul>
     </nav>
   );
