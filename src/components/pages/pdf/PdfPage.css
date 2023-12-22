@@ -1,0 +1,10 @@
+.pdf-page-wrapper {
+  overflow: hidden;
+}
+
+.pdf-page-viewer {
+  width: 100%;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+}

@@ -5,13 +5,8 @@ export type Resume = {
     email: string,
     websites: Website[],
   },
-  introduction: TranslatedItem[],
-  sections: {
-    education: ResumeItem[],
-    career: ResumeItem[],
-    projects: ResumeItem[],
-    skills: ResumeItem[]
-  }
+  introduction: string,
+  sections: ResumeSection[]
 }
 
 export type Website = {
@@ -19,16 +14,16 @@ export type Website = {
   url: string
 }
 
-export type ResumeItem = {
-  date?: {
-    from: number,
-    to?: number
-  },
-  title: TranslatedItem,
-  bulletPoints: TranslatedItem[]
+export type ResumeSection = {
+  name: string,
+  items: ResumeItem[]
 }
 
-export type TranslatedItem = {
-  language: string,
-  content: string
+export type ResumeItem = {
+  date?: {
+    from: string,
+    to?: string
+  },
+  title: string,
+  bulletPoints: string[]
 }

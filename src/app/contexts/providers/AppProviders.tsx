@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { LoadingSpinnerProvider } from '../loadingSpinner/LoadingSpinnerContext';
+import { ProjectsProvider } from '../projects/ProjectsContext';
 
 interface IAppProvidersProps {
   children: React.ReactNode
@@ -13,7 +14,9 @@ interface IAppProvidersProps {
 export default function AppProviders(props: IAppProvidersProps): JSX.Element | null {
   return (
     <LoadingSpinnerProvider>
-      {props.children}
+      <ProjectsProvider>
+        {props.children}
+      </ProjectsProvider>
     </LoadingSpinnerProvider>
   );
 }

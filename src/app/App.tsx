@@ -16,7 +16,6 @@ export default function App(props: IAppProps): JSX.Element | null {
   return (
     <BrowserRouter>
       <AppProviders>
-        <PrimaryNav />
         <AppRoutes />
       </AppProviders>
     </BrowserRouter>
