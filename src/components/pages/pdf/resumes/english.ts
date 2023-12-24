@@ -36,7 +36,7 @@ export function generateEnglishResume(projects: Project[] | undefined): Resume {
               from: 'Spring 2013',
               to: 'Spring 2017'
             },
-            title: 'Nagoya University, Nagoya Japan',
+            title: 'Nagoya University, Aichi Japan',
             bulletPoints: [
               "Bachelor's of Arts in Linguistics",
               "Full-ride scholarship student"
