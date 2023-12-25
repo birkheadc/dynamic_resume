@@ -4,6 +4,7 @@ import { Resume } from "../../../../types/resume/resume";
 export function generateEnglishResume(projects: Project[] | undefined): Resume {
   const resume: Resume = {
     name: "Colby Birkhead",
+    title: "Software Developer",
     contact: {
       phone: '+82-10-6501-5021',
       email: 'birkheadc@gmail.com',
@@ -61,7 +62,7 @@ export function generateEnglishResume(projects: Project[] | undefined): Resume {
       },
       {
         name: 'projects',
-        items: projects ? projects.slice(0, 3).map(
+        items: projects ? projects.sort((a, b) => b.favoriteLevel - a.favoriteLevel).slice(0, 3).map(
           project =>
           ({
             title: project.title,

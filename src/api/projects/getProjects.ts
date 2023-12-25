@@ -4,7 +4,6 @@ import helpers from "../helpers";
 export default async function getProjects(): Promise<Project[]> {
   const url = process.env.PROJECTS_URL + '/projects';
   const { timeout, signal } = helpers.getAbortSignal();
-  console.log(`Getting projects from ${url}`);
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -12,7 +11,8 @@ export default async function getProjects(): Promise<Project[]> {
     });
     if (!response.ok) return [];
     const json = await response.json();
-    return Project.fromJson(json);
+    const projects: Project[] = Project.fromJson(json);
+    return projects;
   } catch {
     return [];
   } finally {

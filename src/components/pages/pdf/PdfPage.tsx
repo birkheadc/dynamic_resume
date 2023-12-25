@@ -98,7 +98,7 @@ function ResumeSectionDisplay(props: { section: ResumeSection, language: string 
       <View style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {props.section.items.map(
           item =>
-          <View style={{ paddingLeft: '30px', display: 'flex', flexDirection: 'row', gap: '10px'}}>
+          <View key={`resume-section-item-key-${item.title}`} style={{ paddingLeft: '30px', display: 'flex', flexDirection: 'row', gap: '10px'}}>
             {item.date && 
               <View>
                 <Text style={{ width: '80px' }}>{`${item.date.from} ~ ${item.date.to ?? 'Present'}`}</Text>
@@ -108,7 +108,7 @@ function ResumeSectionDisplay(props: { section: ResumeSection, language: string 
               <Text style={{ fontFamily: `${props.language}_Header`, fontSize: '16px' }}>{item.title}</Text>
               {item.bulletPoints.map(
                 bp =>
-                <Text style={{ paddingLeft: '15px', marginLeft: '5px', textIndent: '-7px' }}>&#x2022; {bp}</Text>
+                <Text key={`resume-section-item-bullet-point-key-${bp}`} style={{ paddingLeft: '15px', marginLeft: '5px', textIndent: '-7px' }}>&#x2022; {bp}</Text>
               )}
             </View>
           </View>

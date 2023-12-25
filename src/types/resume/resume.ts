@@ -1,5 +1,6 @@
 export type Resume = {
   name: string,
+  title: string,
   contact: {
     phone: string,
     email: string,
