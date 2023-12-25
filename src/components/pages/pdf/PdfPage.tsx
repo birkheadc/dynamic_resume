@@ -61,10 +61,11 @@ function ResumeHeaderDisplay(props: { resume: Resume, language: string }): JSX.E
 
   return (
     <View style={{ fontFamily: 'en_Primary', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-      <View>
-        <Text style={{ fontFamily: 'en_Header', fontSize: '36px', paddingLeft: '10px' }}>{resume.name}</Text>
+      <View style={{ paddingBottom: '10px' }}>
+        <Text style={{ fontFamily: 'en_Header', fontSize: '36px' }}>{resume.name}</Text>
+        <Text style={{ fontSize: '20px' }}>{resume.title}</Text>
       </View>
-      <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', fontSize: '12px', width: '100%' }}>
+      <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', fontSize: '12px', width: '100%', padding: '0 10px' }}>
         <View style={{ display: 'flex', flexDirection: 'column' }}>
           <Text>{`Phone: ${resume.contact.phone}`}</Text>
           <Text>{`Email: ${resume.contact.email}`}</Text>
