@@ -46,13 +46,16 @@ export default function PdfPage(props: IPdfPageProps): JSX.Element | null {
 }
 
 function PdfOpener(props: { url: string | null }): JSX.Element | null {
+
   React.useEffect(function openPdfOnLoad() {
     if (props.url != null) {
       window.location.replace(props.url);
     }
   }, [ props.url ]);
 
-  return null;
+  return (
+    <>{ props.url && <a href={props.url}>Download Colby's Resume</a> }</>
+  );
 }
 
 

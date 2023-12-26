@@ -1,0 +1,34 @@
+select {
+  padding: 5px;
+  text-decoration: underline;
+}
+
+button {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+}
+
+form>div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid black;
+  padding: 5px;
+  width: 400px;
+}
+
+label {
+  padding: 5px;
+}

@@ -14,6 +14,17 @@ export default function ResumeBuilderForm(props: IResumeBuilderFormProps): JSX.E
 
   const [ resumeOptions, setResumeOptions ] = React.useState<ResumeOptions>(DEFAULT_RESUME_OPTIONS);
 
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const name = event.currentTarget.name;
+    const value = event.currentTarget.value;
+
+    setResumeOptions(o => {
+      const newValue = {...o};
+      newValue[name] = value;
+      return newValue;
+    })
+  }
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     props.submit(resumeOptions);
@@ -21,10 +32,13 @@ export default function ResumeBuilderForm(props: IResumeBuilderFormProps): JSX.E
   
   return (
     <form onSubmit={handleSubmit}>
-      <select>
-        <option value={"en"}>English</option>
-        <option value={"jp"}>日本語</option>
-      </select>
+      <div>
+        <label htmlFor='language'>Language</label>
+        <select id='language' name='language' value={resumeOptions.language} onChange={handleChange}>
+          <option value={"en"}>English</option>
+          <option value={"jp"}>日本語</option>
+        </select>
+      </div>
       <button type='submit'>Submit</button>
     </form>
   );
