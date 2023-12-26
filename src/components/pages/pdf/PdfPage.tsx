@@ -1,12 +1,13 @@
 import * as React from 'react';
 import './PdfPage.css'
-import { Document, PDFViewer, Page, Text, View, Link } from '@react-pdf/renderer';
+import { Document, PDFViewer, Page, Text, View, Link, BlobProvider } from '@react-pdf/renderer';
 import { Resume, ResumeItem, ResumeSection, Website } from '../../../types/resume/resume';
 import { ProjectsContext } from '../../../app/contexts/projects/ProjectsContext';
 import { LoadingSpinnerContext } from '../../../app/contexts/loadingSpinner/LoadingSpinnerContext';
 import { Project } from '../../../types/project/project';
 import { generateEnglishResume } from './resumes/english';
 import { generateJapaneseResume } from './resumes/japanese';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 interface IPdfPageProps {
 
@@ -35,23 +36,42 @@ export default function PdfPage(props: IPdfPageProps): JSX.Element | null {
 
   return (
     <main className='pdf-page-wrapper'>
-      <PDFViewer className='pdf-page-viewer'>
-        <Document>
-          <Page style={{ fontFamily: `${language}_Primary`, fontSize: '12px' }}>
-            <View style={{ height: '100%', padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px', color: '#000000', backgroundColor: '#ffffff' }}>
-              <ResumeHeaderDisplay resume={resume} language={language} />
-              <ResumeIntroductionDisplay resume={resume} language={language} />
-              <View style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                {resume.sections.map(
-                  section =>
-                  <ResumeSectionDisplay key={`resume-section-key-${section.name}`} section={section} language={language} />
-                )}
-              </View>
-            </View>
-          </Page>
-        </Document>
-      </PDFViewer>
+      <BlobProvider document={<GenerateDocument resume={resume} language={language} />}>
+        {({ url }) => (
+          <PdfOpener url={url} />
+        )}
+      </BlobProvider>
     </main>
+  );
+}
+
+function PdfOpener(props: { url: string | null }): JSX.Element | null {
+  React.useEffect(function openPdfOnLoad() {
+    if (props.url != null) {
+      window.location.replace(props.url);
+    }
+  }, [ props.url ]);
+
+  return null;
+}
+
+
+function GenerateDocument(props: { resume: Resume, language: string }): JSX.Element {
+  return (
+    <Document>
+      <Page style={{ fontFamily: `${props.language}_Primary`, fontSize: '12px' }}>
+        <View style={{ height: '100%', padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px', color: '#000000', backgroundColor: '#ffffff' }}>
+          <ResumeHeaderDisplay resume={props.resume} language={props.language} />
+          <ResumeIntroductionDisplay resume={props.resume} language={props.language} />
+          <View style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            {props.resume.sections.map(
+              section =>
+              <ResumeSectionDisplay key={`resume-section-key-${section.name}`} section={section} language={props.language} />
+            )}
+          </View>
+        </View>
+      </Page>
+    </Document>
   );
 }
 
