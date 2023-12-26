@@ -80,23 +80,22 @@ function ResumeHeaderDisplay(props: { resume: Resume, language: string }): JSX.E
   const resume = props.resume;
 
   return (
-    <View style={{ fontFamily: 'en_Primary', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-      <View style={{ paddingBottom: '10px' }}>
-        <Text style={{ fontFamily: 'en_Header', fontSize: '36px' }}>{resume.name}</Text>
+    <View style={{ fontFamily: 'en_Primary', display: 'flex', flexDirection: 'row', gap: '5px', justifyContent: 'space-between', alignItems: 'center' }}>
+      <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+        <Text style={{ fontFamily: 'en_Header', fontSize: '36px', lineHeight: '1' }}>{resume.name}</Text>
         <Text style={{ fontSize: '20px' }}>{resume.title}</Text>
       </View>
-      <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', fontSize: '12px', width: '100%', padding: '0 10px' }}>
+      <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', fontSize: '12px', gap: '20px' }}>
         <View style={{ display: 'flex', flexDirection: 'column' }}>
           <Text>{`Phone: ${resume.contact.phone}`}</Text>
           <Text>{`Email: ${resume.contact.email}`}</Text>
+          <Link style={{ color: '#000000' }} src={resume.contact.websites[0].url}>{resume.contact.websites[0].name}</Link>
         </View>
-        {pairUpWebsites(resume.contact.websites).map(
-        (pair) =>
-        <View key={`website-key-${pair[0].url}`} style={{ display: 'flex', flexDirection: 'column' }}>
-          <Link style={{ color: '#000000' }} src={pair[0].url}>{pair[0].name}</Link>
-          <Link style={{ color: '#000000' }} src={pair[1].url}>{pair[1].name}</Link>
+        <View style={{ display: 'flex', flexDirection: 'column' }}>
+          <Link style={{ color: '#000000' }} src={resume.contact.websites[1].url}>{resume.contact.websites[1].name}</Link>
+          <Link style={{ color: '#000000' }} src={resume.contact.websites[2].url}>{resume.contact.websites[2].name}</Link>
+          <Link style={{ color: '#000000' }} src={resume.contact.websites[3].url}>{resume.contact.websites[3].name}</Link>
         </View>
-      )}
       </View>
     </View>
   );
@@ -145,16 +144,4 @@ function generateResume(projects: Project[] | undefined, language: string): Resu
   if (language === 'jp') return generateJapaneseResume(projects);
 
   return generateEnglishResume(projects);
-}
-
-function pairUpWebsites(websites: Website[]): [ Website, Website ][] {
-  const pairs: [ Website, Website ][] = websites.reduce(
-    (accumulator, _, currentIndex, array) => {
-      if (currentIndex % 2 === 0) {
-        accumulator.push(array.slice(currentIndex, currentIndex + 2) as never);
-      }
-      return accumulator;
-    }, []);
-
-  return pairs;
 }
