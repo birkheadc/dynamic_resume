@@ -23,7 +23,7 @@ export default function PdfPage(props: IPdfPageProps): JSX.Element | null {
   const language: string = urlParams.get('language') ?? 'en';
 
   const projects = React.useContext(ProjectsContext);
-  const { setLoading } = React.useContext(LoadingSpinnerContext);
+  const { isLoading, setLoading } = React.useContext(LoadingSpinnerContext);
 
   const [ resume, setResume ] = React.useState<Resume>(generateResume(projects, language));
 
@@ -36,11 +36,11 @@ export default function PdfPage(props: IPdfPageProps): JSX.Element | null {
 
   return (
     <main className='pdf-page-wrapper'>
-      <BlobProvider document={<GenerateDocument resume={resume} language={language} />}>
+      { !isLoading && <BlobProvider document={<GenerateDocument resume={resume} language={language} />}>
         {({ url }) => (
           <PdfOpener url={url} />
         )}
-      </BlobProvider>
+      </BlobProvider>}
     </main>
   );
 }
