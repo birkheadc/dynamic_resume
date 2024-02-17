@@ -32,7 +32,7 @@ export default function ResumeBuilderForm(props: IResumeBuilderFormProps): JSX.E
   
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className='language-container'>
         <label htmlFor='language'>Language</label>
         <select id='language' name='language' value={resumeOptions.language} onChange={handleChange}>
           <option value={"en"}>English</option>

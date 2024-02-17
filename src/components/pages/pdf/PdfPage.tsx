@@ -1,13 +1,12 @@
 import * as React from 'react';
 import './PdfPage.css'
-import { Document, PDFViewer, Page, Text, View, Link, BlobProvider } from '@react-pdf/renderer';
-import { Resume, ResumeItem, ResumeSection, Website } from '../../../types/resume/resume';
+import { Document, Page, Text, View, Link, BlobProvider, Font } from '@react-pdf/renderer';
+import { Resume, ResumeSection } from '../../../types/resume/resume';
 import { ProjectsContext } from '../../../app/contexts/projects/ProjectsContext';
 import { LoadingSpinnerContext } from '../../../app/contexts/loadingSpinner/LoadingSpinnerContext';
 import { Project } from '../../../types/project/project';
 import { generateEnglishResume } from './resumes/english';
 import { generateJapaneseResume } from './resumes/japanese';
-import { Navigate, useNavigate } from 'react-router-dom';
 
 interface IPdfPageProps {
 
@@ -26,6 +25,8 @@ export default function PdfPage(props: IPdfPageProps): JSX.Element | null {
   const { isLoading, setLoading } = React.useContext(LoadingSpinnerContext);
 
   const [ resume, setResume ] = React.useState<Resume>(generateResume(projects, language));
+
+  registerHyphenationCallback(language);
 
   React.useEffect(function showLoadingSpinnerUntilProjectsLoad() {
     setLoading(projects == null);
@@ -80,13 +81,13 @@ function GenerateDocument(props: { resume: Resume, language: string }): JSX.Elem
 
 function ResumeHeaderDisplay(props: { resume: Resume, language: string }): JSX.Element {
 
-  const resume = props.resume;
+  const {resume, language} = props;
 
   return (
     <View style={{ fontFamily: 'en_Primary', display: 'flex', flexDirection: 'row', gap: '5px', justifyContent: 'space-between', alignItems: 'center' }}>
       <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
         <Text style={{ fontFamily: 'en_Header', fontSize: '36px', lineHeight: '1' }}>{resume.name}</Text>
-        <Text style={{ fontSize: '20px' }}>{resume.title}</Text>
+        <Text style={{ fontFamily: `${language}_Header_2`, fontSize: '18px' }}>{resume.title}</Text>
       </View>
       <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', fontSize: '12px', gap: '20px' }}>
         <View style={{ display: 'flex', flexDirection: 'column' }}>
@@ -106,7 +107,7 @@ function ResumeHeaderDisplay(props: { resume: Resume, language: string }): JSX.E
 
 function ResumeIntroductionDisplay(props: { resume: Resume, language: string }): JSX.Element {
   return (
-    <View style={{ textAlign: 'justify', padding: '0px 10px', lineHeight: '0.9' }}>
+    <View style={{ textAlign: 'justify', padding: '0px 10px', lineHeight: `${props.language === 'en' ? 0.9 : 1.0}` }}>
       <Text>{props.resume.introduction}</Text>
     </View>
   );
@@ -128,7 +129,7 @@ function ResumeSectionDisplay(props: { section: ResumeSection, language: string 
               </View>
             }
             <View style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-              <Text style={{ fontFamily: `${props.language}_Header`, fontSize: '16px' }}>{item.title}</Text>
+              <Text style={{ fontFamily: `${props.language}_Header_2`, fontSize: '16px', textTransform: 'capitalize' }}>{item.title}</Text>
               {item.bulletPoints.map(
                 bp =>
                 <Text key={`resume-section-item-bullet-point-key-${bp}`} style={{ paddingLeft: '15px', marginLeft: '5px', textIndent: '-7px' }}>&#x2022; {bp}</Text>
@@ -147,4 +148,20 @@ function generateResume(projects: Project[] | undefined, language: string): Resu
   if (language === 'jp') return generateJapaneseResume(projects);
 
   return generateEnglishResume(projects);
+}
+
+function registerHyphenationCallback(language: string) {
+
+  // const languagesWithoutSpaces = [
+  //   'jp'
+  // ]
+
+  // if (languagesWithoutSpaces.includes(language)) {
+  //   Font.registerHyphenationCallback((word) =>
+  //     Array.from(word).flatMap((char) => [char, ''])
+  //   );
+  //   return;
+  // }
+
+  // Font.registerHyphenationCallback(w => [w]);
 }

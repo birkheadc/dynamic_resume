@@ -4,7 +4,7 @@ import { Resume } from "../../../../types/resume/resume";
 export function generateJapaneseResume(projects: Project[] | undefined): Resume {
   const resume: Resume = {
     name: "Colby Birkhead",
-    title: "Software Developer",
+    title: "ウェブ開発・フルスタック",
     contact: {
       phone: '+82-10-6501-5021',
       email: 'birkheadc@gmail.com',
@@ -27,75 +27,75 @@ export function generateJapaneseResume(projects: Project[] | undefined): Resume 
         }
       ]
     },
-    introduction: 'American expat and small business manager looking to change gears. Developed software for use in production and advertising. Quick and eager to learn new languages and frameworks, driven to apply best practices and write clean code. Skilled at adapting to new and changing environments. Comfortable in many programming languages, as well as natural ones. Fully fluent in Japanese, conversationally fluent in Korean.',
+    introduction: 'アメリカ人の在住者で、中小企業経営者からウェブ開発に転職しようとしています　POSシステムのソフトウェアや広告ウェブサイトを開発しています　新しい言語やフレームワークを素早く学び、ベストプラクティスを適用し、メンテナンスしやすいコードの実現に努めています　新しい環境に適応する能力に長けています　多くのプログラミング言語に加えて、自然言語にも慣れています　英語と日本語は流暢であり、韓国語は会話レベルです',
     sections: [
       {
-        name: 'education',
+        name: '学歴',
         items: [
           {
             date: {
-              from: 'Spring 2013',
-              to: 'Spring 2017'
+              from: '2013年',
+              to: '2017年'
             },
-            title: 'Nagoya University, Aichi Japan',
+            title: '名古屋大学',
             bulletPoints: [
-              "Bachelor's of Arts in Linguistics",
-              "Full-ride scholarship student"
+              "文学部卒業",
+              "文部科学省による全額奨学金受給者"
             ]
           }
         ]
       },
       {
-        name: 'career',
+        name: '職歴',
         items: [
           {
             date: {
-              from: 'Spring 2017'
+              from: '2017年'
             },
-            title: 'Retail Manager',
+            title: '小売店店主',
             bulletPoints: [
-              "Managed a grocery store focused on foreign clientele in South Korea",
-              "Developed applications to assist with daily duties, including a book-keeping application that now automates what used to be over 100 hours of work a year"
+              "外国人向けスーパーの経営",
+              "日常業務支援のためのアプリケーションを開発し、その中、かつて毎年100時間以上かかっていた作業を自動化する簿記アプリケーションも含まれる"
             ]
           }
         ]
       },
       {
-        name: 'projects',
+        name: 'プロジェクト',
         items: projects ? projects.sort((a, b) => b.favoriteLevel - a.favoriteLevel).slice(0, 3).map(
           project =>
           ({
             title: project.title,
-            bulletPoints: project.descriptions.bulletPoints.find(bp => bp.language === 'en')?.content ?? []
+            bulletPoints: project.descriptions.bulletPoints.find(bp => bp.language === 'jp')?.content ?? []
           })
         ) : []
       },
       {
-        name: 'skills',
+        name: 'スキル',
         items: [
           {
-            title: "Full Stack Web Development",
+            title: "ウェブ開発・フルスタック",
             bulletPoints: [
-              "5+ years experience creating web sites and applications for use in my own and other businesses",
-              "Frontend: HTML5, CSS, Java/TypeScript, Node, React, Angular",
-              "Backend: C# / ASP.NET, NestJS, Java / Spring, Ruby / Rails",
-              "Databases: PostgreSQL, MySQL, SQLite, MongoDB, DynamoDB",
-              "Comfortable with many peripheral technologies and services: Linux, Bash, Git, Docker, AWS"
+              "社内アプリや広告ウェブサイト開発の経験5年以上",
+              "フロント: HTML5, CSS, Java/TypeScript, Node, React, Angular",
+              "バック: C# / ASP.NET, NestJS, Java / Spring, Ruby / Rails",
+              "データベース: PostgreSQL, MySQL, SQLite, MongoDB, DynamoDB",
+              "多くの周辺技術やサービスに精通しています: Linux, Bash, Git, Docker, AWS"
             ]
           },
           {
-            title: "Game Development",
+            title: "ゲーム開発",
             bulletPoints: [
-              "Participated in and published to multiple online game jams.",
-              "6+ years experience with Unity and Unreal Engine 4",
-              "Experience building peer-to-peer as well as dedicated-server architecture"
+              "itch.ioでゲームジャムに参加してゲームを公開している",
+              "UnityとUnreal 4/5の経験6年以上",
+              "P2Pおよび専用サーバーのマルチプレイヤーを構築している"
             ]
           },
           {
-            title: "Human Languages",
+            title: "言語",
             bulletPoints: [
-              "15+ years Japanese, fully fluent",
-              "5+ years Korean, conversationally fluent"
+              "英語母語者・日本語15年以上",
+              "韓国語5年以上"
             ]
           }
         ]

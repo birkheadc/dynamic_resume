@@ -1,11 +1,42 @@
+.language-container {
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.language-container:hover, .language-container:focus-within {
+  background-color: #666;
+  color: #eee;
+}
+
+.language-container>label {
+  z-index: 10;
+  pointer-events: none;
+}
+
 select {
-  padding: 5px;
-  text-decoration: underline;
+  position: absolute;
+  inset: 0;
+  flex-grow: 1;
+  cursor: pointer;
+  text-align: right;
+  padding: 0.5rem;
+}
+
+select:hover, select:focus {
+  background-color: #666;
+  color: #eee;
 }
 
 button {
   border: 1px solid black;
-  padding: 5px;
+  padding: 0.5rem 1rem;
+}
+
+button:hover, button:focus {
+  background-color: #666;
+  color: #eee
 }
 
 form {
