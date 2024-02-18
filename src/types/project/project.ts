@@ -11,6 +11,7 @@ export class Project {
   site: string = "";
   source: string = "";
   favoriteLevel: number = 0;
+  resumeFavoriteLevel: number = 0;
   imageUrls: string[] = [];
 
   static fromJson(json: any): Project[] {
@@ -31,6 +32,7 @@ export class Project {
       project.site = element.site ?? "";
       project.source = element.source ?? "";
       project.favoriteLevel = element.favoriteLevel ?? 0;
+      project.resumeFavoriteLevel = element.favoriteLevel ?? 0;
       project.imageUrls = element.imageUrls ?? [];
       
       projects.push(project);

@@ -62,7 +62,7 @@ export function generateJapaneseResume(projects: Project[] | undefined): Resume 
       },
       {
         name: 'プロジェクト',
-        items: projects ? projects.sort((a, b) => b.favoriteLevel - a.favoriteLevel).slice(0, 3).map(
+        items: projects ? projects.sort((a, b) => b.resumeFavoriteLevel - a.resumeFavoriteLevel).slice(0, 3).map(
           project =>
           ({
             title: project.title,
