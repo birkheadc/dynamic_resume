@@ -11,17 +11,15 @@ import teko from './src/fonts/Teko/static/Teko-Regular.ttf';
 import abel from './src/fonts/Abel/Abel-Regular.ttf';
 import ibmBold from './src/fonts/IBM_Plex_Sans_JP/IBMPlexSansJP-SemiBold.ttf';
 import ibm from './src/fonts/IBM_Plex_Sans_JP/IBMPlexSansJP-Medium.ttf';
-import sawarabi from './src/fonts/Sawarabi_Mincho/SawarabiMincho-Regular.ttf';
+import shippori from './src/fonts/Shippori_Mincho/ShipporiMincho-Regular.ttf';
 
 import App from './src/app/App';
 import { Font } from '@react-pdf/renderer';
 
-// Font.register({ family: 'en_Primary', src: barlow });
-// Font.register({ family: 'en_Header', src: anton });
 Font.register({ family: 'en_Primary', src: abel });
 Font.register({ family: 'en_Header', src: tekoBold });
 Font.register({ family: 'en_Header_2', src: teko });
-Font.register({ family: 'jp_Primary', src: sawarabi });
+Font.register({ family: 'jp_Primary', src: shippori });
 Font.register({ family: 'jp_Header', src: ibmBold });
 Font.register({ family: 'jp_Header_2', src: ibm });
 
