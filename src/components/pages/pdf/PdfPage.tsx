@@ -25,7 +25,7 @@ export default function PdfPage(props: IPdfPageProps): JSX.Element | null {
   const { isLoading, setLoading } = React.useContext(LoadingSpinnerContext);
 
   const [ resume, setResume ] = React.useState<Resume>(generateResume(projects, language));
-
+  
   registerHyphenationCallback(language);
 
   React.useEffect(function showLoadingSpinnerUntilProjectsLoad() {

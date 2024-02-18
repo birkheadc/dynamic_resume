@@ -32,7 +32,7 @@ export class Project {
       project.site = element.site ?? "";
       project.source = element.source ?? "";
       project.favoriteLevel = element.favoriteLevel ?? 0;
-      project.resumeFavoriteLevel = element.favoriteLevel ?? 0;
+      project.resumeFavoriteLevel = element.resumeFavoriteLevel ?? 0;
       project.imageUrls = element.imageUrls ?? [];
       
       projects.push(project);

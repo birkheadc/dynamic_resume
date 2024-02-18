@@ -17,8 +17,8 @@
 
 select {
   position: absolute;
-  inset: 0;
-  flex-grow: 1;
+  right: 0;
+  width: 100%;
   cursor: pointer;
   text-align: right;
   padding: 0.5rem;

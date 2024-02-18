@@ -12,6 +12,7 @@ export default async function getProjects(): Promise<Project[]> {
     if (!response.ok) return [];
     const json = await response.json();
     const projects: Project[] = Project.fromJson(json);
+    console.log({projects});
     return projects;
   } catch {
     return [];
