@@ -27,7 +27,7 @@ export function generateEnglishResume(projects: Project[] | undefined): Resume {
         }
       ]
     },
-    introduction: 'American expat and small business manager looking to change gears. Experienced in developing software for point-of-sale as well as advertising. Quick and eager to learn new languages and frameworks, driven to apply best practices and write maintainable code. Skilled at adapting to new and changing environments. Comfortable in many programming languages, as well as natural ones. Fully fluent in English and Japanese, conversationally fluent in Korean.',
+    introduction: 'American expat, small business manager, and software developer. Experienced in developing software for point-of-sale systems and dashboards. Quick and eager to learn new languages and frameworks, driven to apply best practices and write maintainable code. Skilled at adapting to new and changing environments. Comfortable in many programming languages, as well as natural ones. Fully fluent in English and Japanese, conversationally fluent in Korean.',
     sections: [
       {
         name: 'education',
@@ -50,7 +50,20 @@ export function generateEnglishResume(projects: Project[] | undefined): Resume {
         items: [
           {
             date: {
-              from: 'Spring 2017'
+              from: 'Spring 2024',
+            },
+            title: "Software Developer",
+            bulletPoints: [
+              "Developed dashboard application for managing online presence of small businesses",
+              "Worked closely with multiple third-party APIs including Google and Instagram",
+              "Introduced new features that were met with enthusiasm from clients and doubled user engagement",
+              "Fixed long-standing bugs that had become a point of frustration for sales staff and customers alike"
+            ]
+          },
+          {
+            date: {
+              from: 'Spring 2017',
+              to: 'Spring 2024'
             },
             title: 'Retail Manager',
             bulletPoints: [
@@ -62,7 +75,7 @@ export function generateEnglishResume(projects: Project[] | undefined): Resume {
       },
       {
         name: 'projects',
-        items: projects ? projects.sort((a, b) => b.resumeFavoriteLevel - a.resumeFavoriteLevel).slice(0, 3).map(
+        items: projects ? projects.sort((a, b) => b.resumeFavoriteLevel - a.resumeFavoriteLevel).slice(0, 2).map(
           project =>
           ({
             title: project.title,

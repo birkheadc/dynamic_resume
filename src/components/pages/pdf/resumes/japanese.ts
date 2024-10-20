@@ -50,7 +50,20 @@ export function generateJapaneseResume(projects: Project[] | undefined): Resume 
         items: [
           {
             date: {
-              from: '2017年'
+              from: '2024年　春',
+            },
+            title: "ウェブ開発",
+            bulletPoints: [
+              "小規模企業のためのソーシャルメディア管理・分析ツールの開発",
+              "GoogleやInstagramなどのサードパーティAPIと連携",
+              "新機能を導入し、ユーザーの参加を倍に増加", 
+              "長年にわたるバグを修正し、販売スタッフと顧客の不快を解消"
+            ]
+          },
+          {
+            date: {
+              from: '2017年　春',
+              to: '2024年　春'
             },
             title: '小売店店主',
             bulletPoints: [
@@ -62,7 +75,7 @@ export function generateJapaneseResume(projects: Project[] | undefined): Resume 
       },
       {
         name: 'プロジェクト',
-        items: projects ? projects.sort((a, b) => b.resumeFavoriteLevel - a.resumeFavoriteLevel).slice(0, 3).map(
+        items: projects ? projects.sort((a, b) => b.resumeFavoriteLevel - a.resumeFavoriteLevel).slice(0, 2).map(
           project =>
           ({
             title: project.title,
