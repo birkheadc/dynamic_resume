@@ -79,7 +79,9 @@ export function generateEnglishResume(projects: Project[] | undefined): Resume {
           project =>
           ({
             title: project.title,
-            bulletPoints: project.descriptions.bulletPoints.find(bp => bp.language === 'en')?.content ?? []
+            bulletPoints: project.descriptions.bulletPoints.find(bp => bp.language === 'en')?.content ?? [],
+            site: project.site,
+            source: project.source
           })
         ) : []
       },

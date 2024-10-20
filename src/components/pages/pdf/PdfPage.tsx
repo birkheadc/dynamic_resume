@@ -61,9 +61,11 @@ function PdfOpener(props: { url: string | null }): JSX.Element | null {
 
 
 function GenerateDocument(props: { resume: Resume, language: string }): JSX.Element {
+  const fontSize = props.language === 'en' ? '10px' : '10px';
+  
   return (
     <Document>
-      <Page style={{ fontFamily: `${props.language}_Primary`, fontSize: '12px' }}>
+      <Page style={{ fontFamily: `${props.language}_Primary`, fontSize: fontSize }}>
         <View style={{ height: '100%', padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px', color: '#000000', backgroundColor: '#ffffff' }}>
           <ResumeHeaderDisplay resume={props.resume} language={props.language} />
           <ResumeIntroductionDisplay resume={props.resume} language={props.language} />
@@ -113,7 +115,10 @@ function ResumeIntroductionDisplay(props: { resume: Resume, language: string }):
   );
 }
 
-function ResumeSectionDisplay(props: { section: ResumeSection, language: string }): JSX.Element {  
+function ResumeSectionDisplay(props: { section: ResumeSection, language: string }): JSX.Element {
+
+  const present = props.language === 'en' ? 'Present' : '現在';
+
   return (
     <View style={{ padding: '0px 10px' }}>
       <View>
@@ -125,11 +130,14 @@ function ResumeSectionDisplay(props: { section: ResumeSection, language: string 
           <View key={`resume-section-item-key-${item.title}`} style={{ paddingLeft: '30px', display: 'flex', flexDirection: 'row', gap: '10px'}}>
             {item.date && 
               <View>
-                <Text style={{ width: '80px' }}>{`${item.date.from} ~ ${item.date.to ?? 'Present'}`}</Text>
+                <Text style={{ width: '80px' }}>{`${item.date.from} ~ ${item.date.to ?? present}`}</Text>
               </View>
             }
             <View style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-              <Text style={{ fontFamily: `${props.language}_Header_2`, fontSize: '16px', textTransform: 'capitalize' }}>{item.title}</Text>
+              <View style={{ display: 'flex', flexDirection: 'row', gap: '30px', alignItems: 'center' }}>
+                <Text style={{ fontFamily: `${props.language}_Header_2`, fontSize: '16px', textTransform: 'capitalize' }}>{item.title}</Text>
+                {item.site && <Link style={{ color: '#000000' }} src={item.site}>{item.site}</Link>}
+              </View>
               {item.bulletPoints.map(
                 bp =>
                 <Text key={`resume-section-item-bullet-point-key-${bp}`} style={{ paddingLeft: '15px', marginLeft: '5px', textIndent: '-7px' }}>&#x2022; {bp}</Text>

@@ -27,7 +27,7 @@ export function generateJapaneseResume(projects: Project[] | undefined): Resume 
         }
       ]
     },
-    introduction: '中小企業経営者かつウェブ開発者。POSシステムのソフトウェアやダッシュボードを開発しています。新しい言語やフレームワークを素早く学び、ベストプラクティスを適用し、メンテナンスしやすいコードの実現に努めています。新しい環境に適応することを得意としています。多くのプログラミング言語に加えて、自然言語もいくつか勉強しています。英語と日本語は流暢で、韓国語は会話レベルです',
+    introduction: '中小企業経営者かつウェブ開発者。POSシステムのソフトウェアやダッシュボードを開発しています。新しい言語やフレームワークを素早く学び、ベストプラクティスを適用し、メンテナンスしやすいコードの実現に努めています。新しい環境に適応することを得意としています。多くのプログラミング言語に加えて、自然言語も習得しています。英語と日本語は流暢で、韓国語は会話レベルです',
     sections: [
       {
         name: '学歴',
@@ -50,7 +50,7 @@ export function generateJapaneseResume(projects: Project[] | undefined): Resume 
         items: [
           {
             date: {
-              from: '2024年　春',
+              from: '2024年',
             },
             title: "ウェブ開発",
             bulletPoints: [
@@ -62,8 +62,8 @@ export function generateJapaneseResume(projects: Project[] | undefined): Resume 
           },
           {
             date: {
-              from: '2017年　春',
-              to: '2024年　春'
+              from: '2017年',
+              to: '2024年'
             },
             title: '小売店店主',
             bulletPoints: [
@@ -79,7 +79,9 @@ export function generateJapaneseResume(projects: Project[] | undefined): Resume 
           project =>
           ({
             title: project.title,
-            bulletPoints: project.descriptions.bulletPoints.find(bp => bp.language === 'jp')?.content ?? []
+            bulletPoints: project.descriptions.bulletPoints.find(bp => bp.language === 'jp')?.content ?? [],
+            site: project.site,
+            source: project.source
           })
         ) : []
       },

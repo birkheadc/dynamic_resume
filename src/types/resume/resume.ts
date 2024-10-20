@@ -26,5 +26,7 @@ export type ResumeItem = {
     to?: string
   },
   title: string,
+  site?: string,
+  source?: string,
   bulletPoints: string[]
 }

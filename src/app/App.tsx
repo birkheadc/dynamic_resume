@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import AppProviders from './contexts/providers/AppProviders';
-import PrimaryNav from '../components/nav/primaryNav/PrimaryNav';
 import AppRoutes from './routes/AppRoutes';
 
 interface IAppProps {
