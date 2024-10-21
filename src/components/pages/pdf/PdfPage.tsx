@@ -153,7 +153,7 @@ function ResumeSectionDisplay(props: { section: ResumeSection, language: string 
 function generateResume(projects: Project[] | undefined, language: string): Resume {
   // Please forgive me for I have sinned
   if (language === 'en') return generateEnglishResume(projects);
-  if (language === 'jp') return generateJapaneseResume(projects);
+  if (language === 'ja') return generateJapaneseResume(projects);
 
   return generateEnglishResume(projects);
 }

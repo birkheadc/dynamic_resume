@@ -79,7 +79,7 @@ export function generateJapaneseResume(projects: Project[] | undefined): Resume 
           project =>
           ({
             title: project.title,
-            bulletPoints: project.descriptions.bulletPoints.find(bp => bp.language === 'jp')?.content ?? [],
+            bulletPoints: project.descriptions.bulletPoints.find(bp => bp.language === 'ja')?.content ?? [],
             site: project.site,
             source: project.source
           })

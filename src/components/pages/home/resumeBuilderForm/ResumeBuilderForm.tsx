@@ -36,7 +36,7 @@ export default function ResumeBuilderForm(props: IResumeBuilderFormProps): JSX.E
         <label htmlFor='language'>Language</label>
         <select id='language' name='language' value={resumeOptions.language} onChange={handleChange}>
           <option value={"en"}>English</option>
-          <option value={"jp"}>日本語</option>
+          <option value={"ja"}>日本語</option>
         </select>
       </div>
       <button type='submit'>Submit</button>

@@ -20,9 +20,9 @@ import { Font } from '@react-pdf/renderer';
 Font.register({ family: 'en_Primary', src: abel });
 Font.register({ family: 'en_Header', src: tekoBold });
 Font.register({ family: 'en_Header_2', src: teko });
-Font.register({ family: 'jp_Primary', src: zen });
-Font.register({ family: 'jp_Header', src: ibmBold });
-Font.register({ family: 'jp_Header_2', src: ibm });
+Font.register({ family: 'ja_Primary', src: zen });
+Font.register({ family: 'ja_Header', src: ibmBold });
+Font.register({ family: 'ja_Header_2', src: ibm });
 
 Font.registerHyphenationCallback(word => {
   if (/[0-9a-zA-Z]/.test(word)) {
